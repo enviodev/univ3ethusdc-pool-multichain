@@ -1,0 +1,26 @@
+/*
+ *Please refer to https://docs.envio.dev for a thorough guide on all Envio indexer features*
+ */
+
+import {
+  SwapContractContract_Swap_loader,
+  SwapContractContract_Swap_handler,
+} from "../generated/src/Handlers.gen";
+
+SwapContractContract_Swap_loader(({ event, context }) => {});
+
+SwapContractContract_Swap_handler(({ event, context }) => {
+  console.log(event.transactionHash);
+  console.log(event.blockNumber);
+
+  context.swap.set({
+    id: event.transactionHash,
+    recipient: event.params.recipient,
+    sender: event.params.sender,
+    amount0: event.params.amount0,
+    amount1: event.params.amount1,
+    sqrtPriceX96: event.params.sqrtPriceX96,
+    liquidity: event.params.liquidity,
+    tick: event.params.tick,
+  });
+});

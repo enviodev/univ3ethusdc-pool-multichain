@@ -1,0 +1,12 @@
+name: uniswap indexer # Name of the project
+description: My Awesome Contract # Description of the project
+networks: # Configuration of the blockchain networks that the project is deployed on
+  - id: 1 # Chain identifier of the network
+    start_block: 0 # Initial block from which the indexer will start listening for events
+    contracts: # Configuration for each contract
+      - name: SwapContract # User-defined contract name
+        address: "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640" # An array of addresses that the contract is deployed to on the network
+        handler: src/EventHandlers.ts # Location of the file that handles the events emitted by this contract
+        events: # Configuration for each event emitted by this contract that the indexer will listen for
+          - event: Swap(address indexed sender,address indexed recipient,int256 amount0,int256 amount1,uint160 sqrtPriceX96,uint128 liquidity,int24 tick) #  Name of the event (must match the name in the ABI)
+
