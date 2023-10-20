@@ -13,8 +13,8 @@ SwapContractContract_Swap_handler(({ event, context }) => {
   console.log(event.transactionHash);
   console.log(event.blockNumber);
 
-  context.swap.set({
-    id: event.transactionHash,
+  context.Swap.set({
+    id: event.transactionHash + event.logIndex,
     recipient: event.params.recipient,
     sender: event.params.sender,
     amount0: event.params.amount0,
@@ -22,5 +22,8 @@ SwapContractContract_Swap_handler(({ event, context }) => {
     sqrtPriceX96: event.params.sqrtPriceX96,
     liquidity: event.params.liquidity,
     tick: event.params.tick,
+    blockNumber: event.blockNumber,
+    blockTimestamp: event.blockTimestamp,
+    transactionHash: event.transactionHash,
   });
 });
