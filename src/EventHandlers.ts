@@ -11,7 +11,7 @@ SwapContractContract_Swap_loader(({ event, context }) => {});
 
 SwapContractContract_Swap_handler(({ event, context }) => {
   // console.log(event.transactionHash);
-  console.log(event.blockNumber);
+  // console.log(event.blockNumber);
 
   context.Swap.set({
     id: event.transactionHash + event.logIndex,
