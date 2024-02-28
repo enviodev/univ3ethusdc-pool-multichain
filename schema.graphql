@@ -10,4 +10,6 @@ type Swap @entity {
   blockNumber: Int!
   blockTimestamp: Int!
   transactionHash: String!
+  chainId: Int!
+  srcAddress: String!
 }
